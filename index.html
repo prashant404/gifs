@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Content-Security-Policy" content="default-src: http: https: 'self'" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- ----Bootstrap-SCRIPTS--- -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+  </script>
+
+
+  <!-- ---fontawesome-scripts--- -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <title>GIPHY-API DEMO</title>
+  <link rel="icon" type="image/png" href="Css\android-chrome-512x512.png">
+<!-- css -->
+<link rel="stylesheet" href="Css\Style.css">
+</head>
+
+<body>
+
+  <footer class="white-section" id="footer">
+    <div class="container-fluid">
+      <a href="https://github.com/prashant404"><i class="fab fa-github fa-2x"></i></a>
+      <a href="https://www.instagram.com/i_prashantrai/"><i class="fab fa-instagram fa-2x"></i></a>
+      <p>Created by praSHAnt</p>
+    </div>
+  </footer>
+  <form>
+    <div class="form-group">
+      <h1 class="heading">GIPHY-Generator</h1>
+      <label for="search"></label>
+      <input id="search" type="search" placeholder="Search-gifs">
+      <button id="btnSearch" type="submit" class="btn btn-sm btn-primary">Go</button>
+    </div>
+  </form>
+  <div class="out"></div>
+
+
+  <script>
+    let APIKEY = "x65Z59qwoVwtCWtlASbhP7h35El2f3PW";
+    // you will need to get your own API KEY
+    // https://developers.giphy.com/dashboard/
+    document.addEventListener("DOMContentLoaded", init);
+
+    function init() {
+      document.getElementById("btnSearch").addEventListener("click", ev => {
+        ev.preventDefault(); //to stop the page reload
+        let url = `https://api.giphy.com/v1/gifs/search?api_key=${"x65Z59qwoVwtCWtlASbhP7h35El2f3PW"}&limit=1&q=`;
+        let str = document.getElementById("search").value.trim();
+        url = url.concat(str);
+        console.log(url);
+        fetch(url)
+          .then(response => response.json())
+          .then(content => {
+            //  data, pagination, meta
+            console.log(content.data);
+            console.log("META", content.meta);
+            let fig = document.createElement("figure");
+            let img = document.createElement("img");
+            let fc = document.createElement("figcaption");
+            img.src = content.data[0].images.downsized.url;
+            img.alt = content.data[0].title;
+            fc.textContent = content.data[0].title;
+            fig.appendChild(img);
+            fig.appendChild(fc);
+            let out = document.querySelector(".out");
+            out.insertAdjacentElement("afterbegin", fig);
+            document.querySelector("#search").value = "";
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+html {
+    height: 100%;
+    font-size: 20px;
+    line-height: 1.6;
+    font-family: "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "sans-serif";
+  }
+
+  form-section {
+    font-family: "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "sans-serif";
+    font-size: 3.5rem;
+  }
+
+  .form-group {
+    padding: 10% 8%;
+  }
+
+  img {
+    width: 80%;
+    max-width: 80%;
+  }
+
+  body {
+    text-align: center;
+    background: #23074d;
+    background: #30E8BF;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FF8235, #30E8BF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FF8235, #30E8BF);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    justify-content: center;
+  }
+
+  .heading {
+    margin: 3% 8%;
+    font-size: 1.5rem;
+  }
+
+  .social-icon {
+    margin: 20px 10px;
+  }
+
+  #footer {
+    padding: 10px;
+    text-align: left;
+  }
+
+  p {
+    margin-top: 20px;
+  }
